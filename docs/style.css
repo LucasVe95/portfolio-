@@ -842,36 +842,6 @@ footer p {
     transform: translateY(-5px);
 }
 
-/* Stats Section */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #1f2937 0%, #161b22 100%);
-    border-radius: 12px;
-    margin: 40px 0;
-}
-
-.stat-item {
-    text-align: center;
-    padding: 20px;
-}
-
-.stat-item .counter-value {
-    font-size: 48px;
-    font-weight: 700;
-    color: #58a6ff;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.stat-item .stat-label {
-    font-size: 16px;
-    color: #9da7b3;
-    font-weight: 500;
-}
-
 @media (max-width: 768px) {
     #backToTop {
         bottom: 20px;

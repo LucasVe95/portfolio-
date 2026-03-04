@@ -85,43 +85,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Compteurs d'animation
-    const counters = document.querySelectorAll('.counter-value');
-    let hasRun = false;
-
-    const runCounters = () => {
-        if (hasRun) return;
-
-        counters.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-target'));
-            const duration = 2000;
-            const increment = target / (duration / 50);
-            let current = 0;
-
-            const updateCounter = () => {
-                current += increment;
-                if (current < target) {
-                    counter.textContent = Math.floor(current);
-                    setTimeout(updateCounter, 50);
-                } else {
-                    counter.textContent = target;
-                    hasRun = true;
-                }
-            };
-
-            updateCounter();
-        });
-    };
-
-    // Déclencher les compteurs quand on scroll jusqu'à leur section
-    const statsSection = document.querySelector('.stats');
-    if (statsSection) {
-        const statsObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && !hasRun) {
-                runCounters();
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
             }
-        }, { threshold: 0.5 });
-        
-        statsObserver.observe(statsSection);
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     }
 });
