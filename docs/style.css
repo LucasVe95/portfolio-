@@ -36,8 +36,6 @@ header {
     animation: slideInUp 0.8s ease-out;
 }
 
-/* Police Google */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 body {
     font-family: 'Inter', sans-serif;
