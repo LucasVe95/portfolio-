@@ -32,25 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Bouton retour en haut
-    const backToTopBtn = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
-    });
-
-    if (backToTopBtn) {
-        backToTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
+    // Bouton retour en haut (handled below with IntersectionObserver)
 
     // Animation des éléments au scroll
     const observerOptions = {
@@ -84,6 +66,46 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Compteurs d'animation
+    const counters = document.querySelectorAll('.counter-value');
+    let hasRun = false;
+
+    const runCounters = () => {
+        if (hasRun) return;
+
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 50);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    counter.textContent = Math.floor(current);
+                    setTimeout(updateCounter, 50);
+                } else {
+                    counter.textContent = target;
+                    hasRun = true;
+                }
+            };
+
+            updateCounter();
+        });
+    };
+
+    // Déclencher les compteurs quand on scroll jusqu'à leur section
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !hasRun) {
+                runCounters();
+            }
+        }, { threshold: 0.5 });
+        
+        statsObserver.observe(statsSection);
+    }
 
     // Back to Top Button
     const backToTopBtn = document.getElementById('backToTop');
