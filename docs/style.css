@@ -175,20 +175,47 @@ nav a {
     font-weight: 600;
     font-size: 14px;
     transition: 0.2s;
+    position: relative;
 }
 
 nav a:hover {
-    color: #9c27b0; /* Violet */
+    color: #9c27b0; /* Violet pour les autres liens */
 }
 
-nav a:focus {
-    outline: 2px solid #9c27b0; /* Violet focus */
-    outline-offset: 2px;
+/* Lien "À propos" en bleu */
+nav a[href="#about"],
+nav a[href*="index.html#about"] {
+    color: #58a6ff !important;
 }
 
-/* Hamburger Menu - Hidden */
+nav a[href="#about"]:hover,
+nav a[href*="index.html#about"]:hover {
+    color: #79c0ff !important;
+}
+
+/* Indicateur de page active */
+nav a.active {
+    color: #58a6ff;
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: #58a6ff;
+    border-radius: 1px;
+}
+
+/* Hamburger Menu */
 .hamburger {
-    display: none !important;
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
 }
 
 /* Hero */

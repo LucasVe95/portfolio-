@@ -1,5 +1,27 @@
 // Menu Hamburger Mobile
 document.addEventListener('DOMContentLoaded', function() {
+    // Détection de la page active
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('nav a');
+
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href) {
+            // Pour la page d'accueil (index.html ou /)
+            if ((currentPath.includes('index.html') || currentPath === '/' || currentPath.endsWith('/')) && href.includes('#about')) {
+                link.classList.add('active');
+            }
+            // Pour la page projets
+            else if (currentPath.includes('projets.html') && href.includes('projets.html')) {
+                link.classList.add('active');
+            }
+            // Pour la page contact
+            else if (currentPath.includes('contact.html') && href.includes('contact.html')) {
+                link.classList.add('active');
+            }
+        }
+    });
+
     const hamburger = document.querySelector('.hamburger');
     const navUl = document.querySelector('nav ul');
     const navLinks = document.querySelectorAll('nav a');
