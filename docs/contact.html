@@ -28,7 +28,7 @@
     </header>
 
     <!-- Contact -->
-    <section id="contact">
+    <section id="contact" aria-label="Me contacter">
         <h2>Prenons contact</h2>
         <p class="intro-text">N'hésitez pas à me contacter pour discuter d'opportunités, de collaborations ou simplement pour échanger sur le développement web.</p>
         
@@ -54,6 +54,34 @@
                 <a href="https://github.com/repos" target="_blank" class="contact-btn">Voir mes projets</a>
             </div>
         </div>
+
+        <!-- Formulaire de Contact -->
+        <div class="form-section">
+            <h2 style="margin-top: 60px;">Ou envoie-moi un message</h2>
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/xyzabc123" method="POST">
+                <div class="form-group">
+                    <label for="name" aria-label="Votre nom">Nom *</label>
+                    <input type="text" id="name" name="name" required placeholder="Votre nom complet" aria-required="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="email" aria-label="Votre email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="votre@email.com" aria-required="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject" aria-label="Sujet du message">Sujet *</label>
+                    <input type="text" id="subject" name="subject" required placeholder="Sujet de votre message" aria-required="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="message" aria-label="Votre message">Message *</label>
+                    <textarea id="message" name="message" rows="6" required placeholder="Écrivez votre message ici..." aria-required="true"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" aria-label="Envoyer le formulaire">Envoyer le message</button>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -69,7 +97,7 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" title="Retour en haut">↑</button>
+    <button id="backToTop" title="Retour en haut" aria-label="Retourner vers le haut de la page">↑</button>
 
     <script src="script.js"></script>
 </body>
