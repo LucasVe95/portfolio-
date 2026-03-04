@@ -1,31 +1,25 @@
 // Menu Hamburger Mobile
 document.addEventListener('DOMContentLoaded', function() {
-    // Détection de la page active
     const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('nav a'); // <-- une seule fois
+    const hamburger = document.querySelector('.hamburger');
+    const navUl = document.querySelector('nav ul');
 
+    // Détection de la page active
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href) {
-            // Pour la page d'accueil (index.html ou /)
             if ((currentPath.includes('index.html') || currentPath === '/' || currentPath.endsWith('/')) && href.includes('#about')) {
                 link.classList.add('active');
-            }
-            // Pour la page projets
-            else if (currentPath.includes('projets.html') && href.includes('projets.html')) {
+            } else if (currentPath.includes('projets.html') && href.includes('projets.html')) {
                 link.classList.add('active');
-            }
-            // Pour la page contact
-            else if (currentPath.includes('contact.html') && href.includes('contact.html')) {
+            } else if (currentPath.includes('contact.html') && href.includes('contact.html')) {
                 link.classList.add('active');
             }
         }
     });
 
-    const hamburger = document.querySelector('.hamburger');
-    const navUl = document.querySelector('nav ul');
-
-    // Toggle menu quand on clique sur le hamburger
+    // Toggle menu hamburger
     if (hamburger) {
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
@@ -33,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Fermer le menu quand on clique sur un lien
+    // Fermer le menu au clic sur un lien
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             if (hamburger) {
@@ -43,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Fermer le menu au redimensionnement de la fenêtre
+    // Fermer le menu au resize
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             if (hamburger) {
@@ -52,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
 
     // Bouton retour en haut (handled below with IntersectionObserver)
 
