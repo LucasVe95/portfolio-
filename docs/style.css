@@ -52,12 +52,13 @@ section {
 
 /* Navigation */
 header {
-    background: #0d1117;
-    border-bottom: 1px solid #21262d;
-    padding: 20px 0;
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    border-bottom: 2px solid #21262d;
+    padding: 25px 0;
     position: relative;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 nav {
     display: flex;
@@ -168,12 +169,8 @@ nav ul {
         grid-template-columns: 1fr;
     }
 }
-n
 
-nav a:focus {
-    outline: 2px solid #58a6ff;
-    outline-offset: 2px;
-}av a {
+nav a {
     color: #e6edf3;
     font-weight: 600;
     font-size: 14px;
@@ -181,12 +178,17 @@ nav a:focus {
 }
 
 nav a:hover {
-    color: #58a6ff;
+    color: #9c27b0; /* Violet */
 }
 
+nav a:focus {
+    outline: 2px solid #9c27b0; /* Violet focus */
+    outline-offset: 2px;
+}
 
-nav a:hover {
-    color: #0077ff;
+/* Hamburger Menu - Hidden */
+.hamburger {
+    display: none !important;
 }
 
 /* Hero */
