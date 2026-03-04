@@ -81,12 +81,12 @@ nav ul {
     gap: 30px;
 }
 
-/* Hamburger Menu */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
     width: 30px;
+    z-index: 1001;
 }
 
 .hamburger span {
@@ -210,12 +210,22 @@ nav a.active::after {
     border-radius: 1px;
 }
 
-/* Hamburger Menu */
+/* Hamburger */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
     width: 30px;
+    gap: 5px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: #58a6ff;
+    border-radius: 2px;
+    transition: 0.3s;
 }
 
 /* Hero */
